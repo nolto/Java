@@ -27,9 +27,9 @@ public class Main {
 			card=Dealer.Draw();
 			Dealer.setDeck_info(Deck.getShape(card),Deck.getNumber(card),Deck.getPoint(card));
 		}
-		System.out.println("Dealer Card: "+Dealer.get_shape(0)+Dealer.get_number(0));//
+		System.out.println("Dealer Card: "+Dealer.get_shape(0)+Dealer.get_number(0));// 딜러는 첫번쨰 카드만 보여준다.
 				
-		while(true) {
+		while(true) {		// 플레이어 카드 뽑기
 			System.out.printf("Your Score is %d point.\nDo you need draw a card?(y/n) : ",I.sum());
 			draw=sc.next();
 			if(draw.equals("y") || draw.equals("Y")) {		// 카드 더 받음
@@ -48,26 +48,26 @@ public class Main {
 				break;
 			}			
 		}
-		if(Dealer.sum()<17 && Dealer.count==2) { // 딜러는 2장 합계 16점 이하일때 무조건 1장 더. 17점 이상이면 추가할 수 없음.
+		if(Dealer.sum()<=16 && Dealer.count==2) { // 딜러는 2장 합계 16점 이하일때 무조건 1장 더. 17점 이상이면 추가할 수 없음.
 			card=Dealer.Draw();
-			Dealer.setDeck_info(Deck.getShape(card),Deck.getNumber(card),Deck.getPoint(card));
-			while(true) {
-				if(Dealer.sum()<17 && Dealer.count>2) {// 3장 이상 받았는데 16점 이하인 경우 딜러가 더 받을지 말지 선택
-					System.out.println("Dealer, Do you want draw a card?(y/n)");
-					draw=sc.next();
-					if(draw.equals("Y") || draw.equals("y")) {
-						card=Dealer.Draw();
-						Dealer.setDeck_info(Deck.getShape(card),Deck.getNumber(card),Deck.getPoint(card));
-					}
-				}
+			Dealer.setDeck_info(Deck.getShape(card),Deck.getNumber(card),Deck.getPoint(card));			
+		}
+		while(true) {	// 딜러 드로우
+			System.out.print("Dealer, Do you want draw a card?(y/n) : ");
+			draw=sc.next();
+			if(draw.equals("Y") || draw.equals("y")) {
+				card=Dealer.Draw();
+				Dealer.setDeck_info(Deck.getShape(card),Deck.getNumber(card),Deck.getPoint(card));
+			}else {
 				break;
 			}
 		}
+		
 		if(Dealer.sum()>BLACKJACK && player_burst==false) {
 			System.out.println("BOOOOM!! Busted~! Dealer lose");
 			dealer_burst=true;
 		}
-		if(dealer_burst!=true) {			
+		if(dealer_burst==false) {			
 			if(Dealer.sum()>I.sum() && player_burst==false) {
 				System.out.printf("Dealer Score: %d , Player Score : %d. You lose!\n",Dealer.sum(),I.sum());
 			}else if(Dealer.sum()<I.sum() && player_burst==false) {
