@@ -61,12 +61,13 @@ public class Main {
 			}else {
 				break;
 			}
+			if(Dealer.sum()>BLACKJACK && player_burst==false) {
+				System.out.println("BOOOOM!! Busted~! Dealer lose");
+				dealer_burst=true;
+				break;
+			}
 		}
-		
-		if(Dealer.sum()>BLACKJACK && player_burst==false) {
-			System.out.println("BOOOOM!! Busted~! Dealer lose");
-			dealer_burst=true;
-		}
+				
 		if(dealer_burst==false) {			
 			if(Dealer.sum()>I.sum() && player_burst==false) {
 				System.out.printf("Dealer Score: %d , Player Score : %d. You lose!\n",Dealer.sum(),I.sum());
