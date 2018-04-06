@@ -12,7 +12,6 @@ public class Main {
 		String draw;	// 사용자에게 카드를 더 받을것인지 여부를 확인하여 저장하는 변수
 		
 		int card=0;
-		boolean BlackJack = true;
 		boolean player_burst = false;
 		boolean dealer_burst = false;
 		
@@ -29,37 +28,25 @@ public class Main {
 			Dealer.setDeck_info(Deck.getShape(card),Deck.getNumber(card),Deck.getPoint(card));
 		}
 		System.out.println("Dealer Card: "+Dealer.get_shape(0)+Dealer.get_number(0));//
-		if(I.Deck_check()==1) {// 플레이어 블랙잭
-			System.out.println("Congraturation~! BLACK~ JACK! You Win");
-			BlackJack=false;
-		}else if(Dealer.Deck_check()==1) { // 딜러 블랙잭
-			System.out.println("BLACK~ JACK! Dealer Win");
-			BlackJack=false;
-		}else if(I.Deck_check()==1 && Dealer.Deck_check()==1) { // 둘다 블랙잭
-			System.out.println("DRAW GAME!");
-			BlackJack=false;
-		}
-		
-		if(BlackJack==true) {
-			while(true) {
-				System.out.printf("Your Score is %d point.\nDo you need draw a card?(y/n) : ",I.sum());
-				draw=sc.next();
-				if(draw.equals("y") || draw.equals("Y")) {		// 카드 더 받음
-					card=I.Draw();
-					I.setDeck_info(Deck.getShape(card),Deck.getNumber(card),Deck.getPoint(card));
-					System.out.println("My Card: "+Deck.getShape(card)+Deck.getNumber(card));//
-				}else if(draw.equals("n") || draw.equals("N")) {		// 플레이어는 승부를 끝낼 준비를 함
-					break;
-				}else {
-					System.out.println("Please enter the correct value.");
-					continue;
-				}
-				if(I.sum()>BLACKJACK) {
-					System.out.println("BOOOOM!! Busted~! You lose");
-					player_burst=true;
-					break;
-				}			
+				
+		while(true) {
+			System.out.printf("Your Score is %d point.\nDo you need draw a card?(y/n) : ",I.sum());
+			draw=sc.next();
+			if(draw.equals("y") || draw.equals("Y")) {		// 카드 더 받음
+				card=I.Draw();
+				I.setDeck_info(Deck.getShape(card),Deck.getNumber(card),Deck.getPoint(card));
+				System.out.println("My Card: "+Deck.getShape(card)+Deck.getNumber(card));//
+			}else if(draw.equals("n") || draw.equals("N")) {		// 플레이어는 승부를 끝낼 준비를 함
+				break;
+			}else {
+				System.out.println("Please enter the correct value.");
+				continue;
 			}
+			if(I.sum()>BLACKJACK) {
+				System.out.println("BOOOOM!! Busted~! You lose");
+				player_burst=true;
+				break;
+			}			
 		}
 		if(Dealer.sum()<17 && Dealer.count==2) { // 딜러는 2장 합계 16점 이하일때 무조건 1장 더. 17점 이상이면 추가할 수 없음.
 			card=Dealer.Draw();
