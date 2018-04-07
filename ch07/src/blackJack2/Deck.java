@@ -6,8 +6,8 @@ public class Deck{
 	ArrayList<Card> card_info 	= new ArrayList<Card>();
 	
 	public Deck(){
-		String number[]	= {"A","1","2","3","4","5","6","7","8","9","J","Q","K"};	
-		String shape[]	= {"♠","♥","♦","♣"};
+		String number[]		= {"A","1","2","3","4","5","6","7","8","9","J","Q","K"};	
+		String shape[]		= {"♠","♥","♦","♣"};
 		int Point[]			= {1,2,3,4,5,6,7,8,9,10,10,10,10};	
 		
 		for(int Figure= 0;Figure<shape.length;Figure++) {// 4

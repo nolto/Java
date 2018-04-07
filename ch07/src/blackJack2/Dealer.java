@@ -16,7 +16,7 @@ public class Dealer extends Player{
 		for(Card idx : d_card){
 			System.out.printf("Dealer Card : %s\n", idx);
 			sum+=idx.getPoint();
-//			break;
+//			break;	// 딜러는 카드 하나만 보여줘야 되는거 아닐까..하지만 구현단계이고 애매하니까 일단 넣도록 함.
 		}
 		System.out.printf("Dealer's Score : %2d\n",sum);//
 	}
