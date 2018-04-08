@@ -4,13 +4,18 @@ public class Rule {
 	private Gamer G;
 	private Dealer D;
 	
+	private static final int ALL_CARD=52;
+	private static final int BLACK_JACK=21;
+	private static final int DEALER_PENALTY_SCORE=16;
+	private static final int DEALER_PENALTY_CARD_COUNT=2;
+	
 	public Rule(Dealer d,Gamer g) {
 		this.G=g;
 		this.D=d;
 	}
 	public boolean Gamer_burst_Check() {
 		int check_sum=G.check_sum();
-		if(check_sum>21) {
+		if(check_sum>BLACK_JACK) {
 			System.out.println("Bursted~~!!! you lose");
 			return true;
 		}
@@ -18,10 +23,10 @@ public class Rule {
 	}
 	public int Dealer_burst_Check() {
 		int check_sum=D.check_sum();
-		if(check_sum>21) {
+		if(check_sum>BLACK_JACK) {
 			System.out.println("Bursted~~!!! Dealer lose");
 			return 1;
-		}else if(check_sum<17 && D.d_card.size()<3) {	
+		}else if(check_sum<=DEALER_PENALTY_SCORE && D.d_card.size()<=DEALER_PENALTY_CARD_COUNT) {	
 			return -1;
 		}
 		return 0;
