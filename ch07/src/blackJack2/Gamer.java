@@ -5,9 +5,17 @@ import java.util.ArrayList;
 public class Gamer extends Player{
 	ArrayList<Card> p_card = new ArrayList<Card>();
 	
-	Gamer(Deck all){
-		p_card.add(all.getRandomCard());	// 카드 2장 드로우
-		p_card.add(all.getRandomCard());		
+	@Override
+	void Draw(Deck all) {
+		p_card.add(all.getRandomCard());
+	}
+	@Override
+	int check_sum() {
+		int sum=0;
+		for(Card idx : p_card) {
+			sum+=idx.getPoint();
+		}
+		return sum;
 	}
 	
 	@Override
@@ -15,8 +23,8 @@ public class Gamer extends Player{
 		int sum=0;
 		for(Card idx : p_card){
 			System.out.printf("Your Card : %s\n", idx);
-			sum+=idx.getPoint();
 		}
-		System.out.printf("Your Score : %2d\n",sum);
+		sum=this.check_sum();
+		System.out.printf("Your Score : %2d Point\n",sum);
 	}
 }
