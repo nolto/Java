@@ -1,6 +1,7 @@
 package blackJack2;
 
 import java.util.Scanner;
+import static blackJack2.Message.*;
 
 public class Main{
 	public static void main(String args[]){
@@ -21,7 +22,7 @@ public class Main{
 		boolean playerBurst=false;
 		boolean DealerBurst=false;
 		while(true) {	// Gamer
-			System.out.print("Do you want a card? (y/n) : ");
+			System.out.print(DRAW_INTENTION_MSG);
 			select = sc.next();
 			if(select.equals("y") ||select.equals("Y")) {
 				G.Draw(all_card);
@@ -33,7 +34,7 @@ public class Main{
 			}else if(select.equals("n")|| select.equals("N")){
 				break;
 			}else {
-				System.out.println("D'oh! wrong input!!!");
+				System.out.println(WRONG_INPUT_MSG);
 				continue;
 			}
 		}
@@ -44,10 +45,10 @@ public class Main{
 				DealerBurst=true;
 				break;
 			}else if(mode==-1) {
-				System.out.println("Get one more by rule.");
+				System.out.println(DEALER_RULE_MSG);
 				D.Draw(all_card);
 			}else if(mode==0) {
-				System.out.print("Dealer, Do you want a card? (y/n) : ");
+				System.out.print(DRAW_INTENTION_DEALER_MSG);
 				select = sc.next();
 				if(select.equals("y") || select.equals("Y")) {
 					D.Draw(all_card);
@@ -58,7 +59,7 @@ public class Main{
 				}else if(select.equals("n") || select.equals("N")){
 					break;
 				}else {
-					System.out.println("D'oh! wrong input!!!");
+					System.out.println(WRONG_INPUT_MSG);
 				}
 			}
 			D.check_the_card();
