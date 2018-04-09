@@ -5,8 +5,8 @@ import static blackJack2.Message.*;
 // 분석결과	: 어차피 게이머가 카드를 모두 받고 나서 딜러 차례가 되는 식으로 진행되므로 게이머가 카드를 받을 때마다 Burst가 되는지 일일이 체크할 필요는 없을듯.
 // 분석결과2	: 딜러는 17점 이상이면 받을 수 없음!
 public class Main{
-	private static final int INIT_RECEIVE_CARD_COUNT	= 2;
-	private static final int DEALER_BURST				= 1;
+	private static final int INIT_RECEIVE_CARD_COUNT	= 2;	// 클래스(메인제외)에서는 생성자보다 여기가 먼저 실행됨
+	private static final int DEALER_BURST				= 1;	// static 빼고 메인메서드 안에 넣는것도 괜찮..
 	private static final int DEALER_PANELTY_DRAW		=-1;
 	private static final int DEALER_COMMON_STATE		= 0;
 

@@ -5,9 +5,9 @@ public class Rule {
 	private Gamer G;
 	private Dealer D;
 	
-	private static final int BLACK_JACK=21;
-	private static final int DEALER_PENALTY_SCORE=16;
-	private static final int DEALER_PENALTY_CARD_COUNT=2;
+	private static final int BLACK_JACK					=21;
+	private static final int DEALER_PENALTY_SCORE		=16;
+	private static final int DEALER_PENALTY_CARD_COUNT	=2;
 	
 	public Rule(Dealer d,Gamer g) {
 		this.G=g;
