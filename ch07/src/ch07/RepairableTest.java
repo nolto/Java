@@ -14,12 +14,12 @@ public class RepairableTest {
 		scv.repair(dropship);
 //		scv.repair(marine);			// repair(Repairable) in SCV cannot be applied to (Marine)
 		
-		medic.rescue(firebat);
+		medic.rescure(firebat);
 	}
 }
 
 interface Repairable{}
-interface Rescueable{}
+interface Rescureable{}
 
 class Unit{
 	int hitPoint;
@@ -77,7 +77,7 @@ class Marine extends GroundUnit{
 	}
 }
 
-class SCV extends GroundUnit implements Repairable,Rescueable{
+class SCV extends GroundUnit implements Repairable,Rescureable{
 	SCV(){
 		super(60);
 		hitPoint = MAX_HP;
@@ -98,12 +98,12 @@ class SCV extends GroundUnit implements Repairable,Rescueable{
 	}
 }
 
-class Medic extends GroundUnit implements Rescueable{
+class Medic extends GroundUnit implements Rescureable{
 	Medic(){
 		super(60);
 		hitPoint = MAX_HP;
 	}
-	void rescue(Rescueable a) {
+	void rescure(Rescureable a) {
 		if(a instanceof Unit) {
 			Unit u = (Unit)a;
 			while(u.hitPoint!=u.MAX_HP) {
@@ -117,7 +117,7 @@ class Medic extends GroundUnit implements Rescueable{
 	}
 }
 
-class Firebat extends GroundUnit implements Rescueable{
+class Firebat extends GroundUnit implements Rescureable{
 	Firebat(){
 		super(50);
 		hitPoint = MAX_HP;
