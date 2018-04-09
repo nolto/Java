@@ -7,14 +7,19 @@ public class RepairableTest {
 		
 		Marine marine = new Marine();
 		SCV scv = new SCV();
+		Medic medic = new Medic();
+		Firebat firebat = new Firebat();
 		
 		scv.repair(tank);			// SCV가 Tank를 수리하도록 한다.
 		scv.repair(dropship);
 //		scv.repair(marine);			// repair(Repairable) in SCV cannot be applied to (Marine)
+		
+		medic.rescue(firebat);
 	}
 }
 
 interface Repairable{}
+interface Rescueable{}
 
 class Unit{
 	int hitPoint;
@@ -67,9 +72,12 @@ class Marine extends GroundUnit{
 		hitPoint = MAX_HP;
 	}
 	//...
+	public String toString() {
+		return "Marine";
+	}
 }
 
-class SCV extends GroundUnit implements Repairable{
+class SCV extends GroundUnit implements Repairable,Rescueable{
 	SCV(){
 		super(60);
 		hitPoint = MAX_HP;
@@ -85,5 +93,36 @@ class SCV extends GroundUnit implements Repairable{
 			System.out.println(u.toString()+"의 수리가 끝났습니다.");
 		}
 	}
-	//...
+	public String toString() {
+		return "SCV";
+	}
+}
+
+class Medic extends GroundUnit implements Rescueable{
+	Medic(){
+		super(60);
+		hitPoint = MAX_HP;
+	}
+	void rescue(Rescueable a) {
+		if(a instanceof Unit) {
+			Unit u = (Unit)a;
+			while(u.hitPoint!=u.MAX_HP) {
+				u.hitPoint++;
+			}
+			System.out.println(u.toString()+"의 치료가 끝났습니다.");
+		}
+	}
+	public String toString() {
+		return "Medic";
+	}
+}
+
+class Firebat extends GroundUnit implements Rescueable{
+	Firebat(){
+		super(50);
+		hitPoint = MAX_HP;
+	}
+	public String toString() {
+		return "Firebat";
+	}	
 }
