@@ -2,20 +2,22 @@ package blackJack2;
 
 import java.util.Scanner;
 import static blackJack2.Message.*;
-
+// 분석결과	: 어차피 게이머가 카드를 모두 받고 나서 딜러 차례가 되는 식으로 진행되므로 게이머가 카드를 받을 때마다 Burst가 되는지 일일이 체크할 필요는 없을듯.
+// 분석결과2	: 딜러는 17점 이상이면 받을 수 없음!
 public class Main{
-	private static int INIT_RECEIVE_CARD_COUNT	=2;
-	private static int DEALER_BURST				=1;
-	private static int DEALER_PANELTY_DRAW		=-1;
-	private static int DEALER_COMMON_STATE		=0;
-	
+	private static final int INIT_RECEIVE_CARD_COUNT	= 2;
+	private static final int DEALER_BURST				= 1;
+	private static final int DEALER_PANELTY_DRAW		=-1;
+	private static final int DEALER_COMMON_STATE		= 0;
+
 	public static void main(String args[]){		
-		Deck all_card = new Deck();		
-		Dealer D = new Dealer();
-		Gamer G = new Gamer();
-		Rule rules = new Rule(D,G);
-		Scanner sc = new Scanner(System.in);
-		
+		Deck all_card	= new Deck();		
+		Dealer D		= new Dealer();
+		Gamer G			= new Gamer();
+		Rule rules		= new Rule(D,G);
+		Scanner sc		= new Scanner(System.in);
+
+		System.out.println(BEGIN_MSG);
 		for(int i=0;i<INIT_RECEIVE_CARD_COUNT;i++) {
 			D.Draw(all_card);
 			G.Draw(all_card);

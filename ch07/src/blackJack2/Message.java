@@ -1,6 +1,7 @@
 package blackJack2;
 
 public class Message {
+	public final static String BEGIN_MSG				="게임을 시작합니다. 각자 2장씩 카드를 받습니다.";
 	public final static String DRAW_INTENTION_MSG		="Do you want a card? (y/n) : ";// Intention 의향 의사 의지 생각 의미 셈, ...
 	public final static String DEALER_RULE_MSG			="The dealer gets one more by rule.";
 	public final static String DRAW_INTENTION_DEALER_MSG="Dealer, Do you want a card? (y/n) : ";

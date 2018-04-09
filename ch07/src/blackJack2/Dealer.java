@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import static blackJack2.Message.*;
 
 public class Dealer extends Player{
-	ArrayList<Card> d_card = new ArrayList<Card>();
+	ArrayList<Card> d_card = new ArrayList<Card>();	// private 권장
 	
 	@Override
 	void Draw(Deck all) {
