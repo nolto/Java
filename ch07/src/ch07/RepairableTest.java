@@ -30,7 +30,6 @@ class Unit{
 	Unit(int hp){
 		MAX_HP = hp;
 	}
-	// ...
 }
 
 class GroundUnit extends Unit{
@@ -54,7 +53,6 @@ class Tank extends GroundUnit implements Repairable{
 	public String toString() {
 		return "Tank";
 	}
-	//...
 }
 
 class Dropship extends AirUnit implements Repairable{
@@ -66,7 +64,6 @@ class Dropship extends AirUnit implements Repairable{
 	public String toString() {
 		return "Dropship";
 	}
-	//...
 }
 
 class Marine extends GroundUnit{
@@ -74,7 +71,6 @@ class Marine extends GroundUnit{
 		super(40);
 		hitPoint = MAX_HP;
 	}
-	//...
 	public String toString() {
 		return "Marine";
 	}
@@ -85,7 +81,7 @@ class SCV extends GroundUnit implements Repairable,Rescureable{
 		super(60);
 		hitPoint = MAX_HP;
 	}
-	
+
 	void repair(Repairable r) {
 		if(!this.equals(r)) {		// 주소값을 비교하여 자가수리를 할 수 없도록 처리
 			if(r instanceof Unit) {
