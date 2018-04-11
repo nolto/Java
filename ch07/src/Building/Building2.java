@@ -3,19 +3,19 @@ package Building;
 public class Building2 {
 
 }
-class Academy extends Building{}
-class Bunker extends Building{}
-class Barrack extends LiftableImple{}
-class Factory extends LiftableImple{}
+class Academy2 extends Building2{}
+class Bunker2 extends Building2{}
+class Barrack2 extends LiftableImple2{}
+class Factory2 extends LiftableImple2{}
 
-interface Liftable{
+interface Liftable2{
 	void liftOff();
 	void move(int x, int y);
 	void stop();
 	void land();
 }
 
-class LiftableImple extends Building2 implements Liftable{
+class LiftableImple2 extends Building2 implements Liftable2{
 
 	@Override
 	public void liftOff() {
