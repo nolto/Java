@@ -1,7 +1,7 @@
 package Building;
 /// 재사용에 유연하진 않음. 예를 들어 유닛이 뜨고 착륙하는 특징을 가지기 힘듬 현재 코드에서.
 public class Building2 {
-
+	void build() {}
 }
 class Academy2 extends Building2{}
 class Bunker2 extends Building2{}
