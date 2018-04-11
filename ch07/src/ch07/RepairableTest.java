@@ -18,6 +18,8 @@ public class RepairableTest {
 		scv.repair(scv2);
 		
 		medic.rescure(firebat);
+		
+		tank.getDamage(10);
 	}
 }
 
@@ -29,6 +31,9 @@ class Unit{
 	final int MAX_HP;
 	Unit(int hp){
 		MAX_HP = hp;
+	}
+	void getDamage(int damage) {
+		hitPoint-=damage;
 	}
 }
 
@@ -83,14 +88,16 @@ class SCV extends GroundUnit implements Repairable,Rescureable{
 	}
 
 	void repair(Repairable r) {
-		if(!this.equals(r)) {		// 주소값을 비교하여 자가수리를 할 수 없도록 처리
+		if(!(this==r)) {		// !this.equals(r) 주소값을 비교하여 자가수리를 할 수 없도록 처리
 			if(r instanceof Unit) {
 				Unit u = (Unit)r;
-				while(u.hitPoint!=u.MAX_HP) {
-					/* Unit의 HP를 증가시킨다. */
-					u.hitPoint++;
+				if(u.MAX_HP != u.hitPoint) {//// 풀피일땐 수리 하지 않음.(MAX_HP는 SCV꺼. 수리대상은 u.MAX_HP다!!)
+					while(u.hitPoint!=u.MAX_HP) {
+						/* Unit의 HP를 증가시킨다. */
+						u.hitPoint++;
+					}
+					System.out.println(this.toString()+"의 수리가 끝났습니다.");
 				}
-				System.out.println(u.toString()+"의 수리가 끝났습니다.");
 			}
 		}else {
 			System.out.println("본인을 수리할 수 없습니다.");
